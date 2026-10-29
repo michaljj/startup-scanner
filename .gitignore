@@ -1,0 +1,10 @@
+# Build output
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Test results
+TestResults/
+*.trx

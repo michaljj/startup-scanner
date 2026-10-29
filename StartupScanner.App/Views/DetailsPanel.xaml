@@ -1,0 +1,47 @@
+<UserControl x:Class="StartupScanner.App.Views.DetailsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <UserControl.Resources>
+    <DataTemplate x:Key="RowTemplate">
+      <Grid Margin="0,1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="130"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="{Binding Label}" Foreground="Gray" TextWrapping="Wrap"/>
+        <TextBlock Grid.Column="1" Text="{Binding Value}" TextWrapping="Wrap"
+                   ToolTip="{Binding Value}"/>
+      </Grid>
+    </DataTemplate>
+  </UserControl.Resources>
+
+  <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+    <StackPanel>
+      <TextBlock Text="{Binding Title}" FontSize="16" FontWeight="Bold" TextWrapping="Wrap" Margin="0,0,0,10"/>
+
+      <TextBlock Text="IDENTITY" FontWeight="Bold" Margin="0,6,0,3"/>
+      <ItemsControl ItemsSource="{Binding Identity}" ItemTemplate="{StaticResource RowTemplate}"/>
+
+      <TextBlock Text="FILE" FontWeight="Bold" Margin="0,12,0,3"/>
+      <ItemsControl ItemsSource="{Binding File}" ItemTemplate="{StaticResource RowTemplate}"/>
+
+      <TextBlock Text="SIGNATURE" FontWeight="Bold" Margin="0,12,0,3"/>
+      <ItemsControl ItemsSource="{Binding Signature}" ItemTemplate="{StaticResource RowTemplate}"/>
+
+      <TextBlock Text="LOCATION AND STATE" FontWeight="Bold" Margin="0,12,0,3"/>
+      <ItemsControl ItemsSource="{Binding LocationAndState}" ItemTemplate="{StaticResource RowTemplate}"/>
+
+      <TextBlock Text="TYPE-SPECIFIC" FontWeight="Bold" Margin="0,12,0,3"/>
+      <ItemsControl ItemsSource="{Binding TypeSpecific}" ItemTemplate="{StaticResource RowTemplate}"/>
+
+      <TextBlock Text="HISTORY" FontWeight="Bold" Margin="0,12,0,3"/>
+      <ItemsControl ItemsSource="{Binding HistoryLines}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding}" TextWrapping="Wrap" FontFamily="Consolas" FontSize="11"/>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>
